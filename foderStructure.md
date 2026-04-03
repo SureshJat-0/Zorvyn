@@ -1,0 +1,42 @@
+finance-dashboard-backend/
+│
+├── src/
+│   ├── config/              # DB, env configs
+│   │   └── db.js
+│   │
+│   ├── models/              # Mongoose schemas
+│   │   ├── transaction.model.js
+│   │   └── user.model.js
+│   │
+│   ├── controllers/         # Route logic 
+│   │   ├── auth.controller.js
+│   │   ├── user.controller.js
+│   │   ├── transaction.controller.js
+│   │   └── analytics.controller.js
+│   │
+│   ├── routes/              # Express routes
+│   │   ├── auth.routes.js
+│   │   ├── user.routes.js
+│   │   ├── transaction.routes.js
+│   │   └── analytics.routes.js
+│   │
+│   ├── middleware/          # Auth & role checks
+│   │   ├── auth.middleware.js
+│   │   ├── role.middleware.js
+│   │   └── error.middleware.js
+│   │
+│   ├── utils/               # Helpers
+│   │   └── apiResponse.js
+│   │
+│   ├── validations/         # Input validation ( Yet to be added )
+│   │   ├── user.validation.js
+│   │   └── transaction.validation.js
+│   │
+│   ├── app.js               # Express app setup
+│   └── server.js            # Entry point
+│
+├── .env
+├── package.json
+├── folderStructure.md
+├── .gitignore
+└── README.md
