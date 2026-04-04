@@ -6,11 +6,11 @@ const successResponse = (res, message, data = {}, status = 200) => {
   });
 };
 
-const errorResponse = (res, message, err = null, status = 500) => {
+const errorResponse = (res, message, error = null, status = 500) => {
   return res.status(status).json({
     success: false,
     message,
-    err,
+    error,
   });
 };
 

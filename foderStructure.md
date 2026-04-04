@@ -22,14 +22,15 @@ finance-dashboard-backend/
 │   │
 │   ├── middleware/          # Auth & role checks
 │   │   ├── auth.middleware.js
-│   │   ├── role.middleware.js
-│   │   └── error.middleware.js
+│   │   ├── error.middleware.js
+│   │   └── role.middleware.js
 │   │
 │   ├── utils/               # Helpers
-│   │   └── apiResponse.js
+│   │   ├── apiResponse.js
+│   │   └── asyncWrapper.js
 │   │
-│   ├── validations/         # Input validation ( Yet to be added )
-│   │   ├── user.validation.js
+│   ├── validations/         # Input validation
+│   │   ├── auth.validation.js
 │   │   └── transaction.validation.js
 │   │
 │   ├── app.js               # Express app setup

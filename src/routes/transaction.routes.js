@@ -8,19 +8,40 @@ import {
   updateTransaction,
 } from "../controllers/transaction.controller.js";
 import { authCheck } from "../middlewares/auth.middleware.js";
-import { adminOnly, analyticAccess } from "../middlewares/role.middlewares.js";
+import {
+  isAdmin,
+  isAnalystOrAdmin,
+  isAllRoles,
+} from "../middlewares/role.middleware.js";
+import {
+  validateTransactionJoi,
+  validateTransactionUpdateJoi,
+} from "../validations/transaction.validation.js";
+import { asyncWrapper } from "../utils/asyncWrapper.js";
 
 const transactionRouter = express.Router();
 
 transactionRouter
   .route("/")
-  .post(authCheck, adminOnly, createTransaction)
-  .get(analyticAccess, getTransactions);
-transactionRouter.route("/recent").get(getRecentTransactions);
+  .post(
+    authCheck,
+    isAdmin,
+    validateTransactionJoi,
+    asyncWrapper(createTransaction),
+  )
+  .get(authCheck, isAnalystOrAdmin, asyncWrapper(getTransactions));
+transactionRouter
+  .route("/recent")
+  .get(authCheck, isAllRoles, asyncWrapper(getRecentTransactions));
 transactionRouter
   .route("/:id")
-  .get(getTransactionById)
-  .delete(authCheck, adminOnly, deleteTransaction)
-  .put(authCheck, adminOnly, updateTransaction);
+  .get(authCheck, isAnalystOrAdmin, asyncWrapper(getTransactionById))
+  .delete(authCheck, isAdmin, asyncWrapper(deleteTransaction))
+  .put(
+    authCheck,
+    isAdmin,
+    validateTransactionUpdateJoi,
+    asyncWrapper(updateTransaction),
+  );
 
 export default transactionRouter;
