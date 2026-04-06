@@ -178,7 +178,7 @@ Create `.env.docker` in project root if it does not exist:
 ```env
 PORT=3000
 NODE_ENV=development
-MONGO_URI=mongodb://mongo:27017/financeDB
+MONGO_URI=mongodb://mongo:27017/zorvyn
 JWT_SECRET=your_secret
 ```
 
