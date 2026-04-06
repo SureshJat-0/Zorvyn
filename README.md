@@ -75,7 +75,25 @@ See [foderStructure.md](foderStructure.md).
 ## API Base URL
 
 - Local: `http://localhost:3000`
+- Live: `https://zorvyn-advc.onrender.com`
 - Version prefix: `/api/v1`
+
+Example live endpoint:
+- `https://zorvyn-advc.onrender.com/api/v1/auth/me`
+
+## API Testing (No UI)
+
+This project is backend-only and does not include a frontend UI.
+
+Use any API client to test endpoints, such as:
+- Postman
+- Thunder Client (VS Code extension)
+- Insomnia
+- Hoppscotch
+
+For authenticated routes:
+- Login first using `POST /api/v1/auth/login`
+- Reuse the auth cookie (`token`) in subsequent requests
 
 ## Authentication Flow
 
