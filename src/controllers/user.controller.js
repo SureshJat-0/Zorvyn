@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import { errorResponse, successResponse } from "../utils/apiResponse.js";
 
 const getUsers = async (req, res) => {
-  const users = await User.find({});
+  const users = await User.find({}).select("-password");
   successResponse(res, "Users fetched successfully.", users, 200);
 };
 
@@ -16,7 +16,7 @@ const getUserById = async (req, res) => {
 const updateUserRole = async (req, res) => {
   const { id } = req.params;
   const { role } = req.body;
-  if (!role) return errorResponse(res, "Role not found.", null, 404);
+  if (!role) return errorResponse(res, "Role not found.", null, 400);
   const result = await User.findByIdAndUpdate(
     id,
     {
@@ -31,7 +31,7 @@ const updateUserRole = async (req, res) => {
 const updateUserStatus = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
-  if (!status) return errorResponse(res, "Status not found.", null, 404);
+  if (!status) return errorResponse(res, "Status not found.", null, 400);
   const result = await User.findByIdAndUpdate(
     id,
     {

@@ -11,13 +11,16 @@ import {
   validateRegisterJoi,
 } from "../validations/auth.validation.js";
 import { asyncWrapper } from "../utils/asyncWrapper.js";
+import { authLimiter } from "../middlewares/rateLimit.middleware.js";
 
 const authRouter = express.Router();
 
 authRouter
   .route("/register")
-  .post(validateRegisterJoi, asyncWrapper(registerUser)); // public access
-authRouter.route("/login").post(validateLoginJoi, asyncWrapper(loginUser)); // public access
+  .post(authLimiter, validateRegisterJoi, asyncWrapper(registerUser)); // public access
+authRouter
+  .route("/login")
+  .post(authLimiter, validateLoginJoi, asyncWrapper(loginUser)); // public access
 authRouter
   .route("/me")
   .get(authCheck, isAllRoles, asyncWrapper(getCurrentUser));

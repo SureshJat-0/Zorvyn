@@ -6,7 +6,7 @@ const errorHandler = (error, req, res, next) => {
   }
   const status = Number.isInteger(error?.status) ? error.status : 500;
   const message = error?.message || "Internal server error.";
-  return errorResponse(res, message, error, status);
+  errorResponse(res, message, error, status);
 };
 
 const notFound = (req, res) => {

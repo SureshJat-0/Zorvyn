@@ -37,7 +37,7 @@ transactionRouter
   .route("/:id")
   .get(authCheck, isAnalystOrAdmin, asyncWrapper(getTransactionById))
   .delete(authCheck, isAdmin, asyncWrapper(deleteTransaction))
-  .put(
+  .patch(
     authCheck,
     isAdmin,
     validateTransactionUpdateJoi,

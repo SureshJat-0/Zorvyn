@@ -1,4 +1,4 @@
-finance-dashboard-backend/
+zorvyn/
 │
 ├── src/
 │   ├── config/              # DB, env configs
@@ -22,16 +22,21 @@ finance-dashboard-backend/
 │   │
 │   ├── middleware/          # Auth & role checks
 │   │   ├── auth.middleware.js
+│   │   ├── rateLimit.middleware.js
 │   │   ├── error.middleware.js
 │   │   └── role.middleware.js
 │   │
 │   ├── utils/               # Helpers
 │   │   ├── apiResponse.js
+│   │   ├── homeResponse.js
 │   │   └── asyncWrapper.js
 │   │
 │   ├── validations/         # Input validation
 │   │   ├── auth.validation.js
 │   │   └── transaction.validation.js
+│   │
+│   ├── scripts/         # scripts
+│   │   └── initData.js
 │   │
 │   ├── app.js               # Express app setup
 │   └── server.js            # Entry point
