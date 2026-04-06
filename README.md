@@ -202,6 +202,11 @@ Seed script creates:
 - one viewer user
 - sample transactions
 
+Default seeded email for admin, analyst, viewer:
+- `admin@example.com`
+- `analyst@example.com`
+- `viewer@example.com`
+
 Default seeded password for all seeded users:
 - `123456`
 
